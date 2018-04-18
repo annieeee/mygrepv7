@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <sys/param.h>
+#include <stdlib.h>
 
 #define	CBRA	1
 #define	CCHR	2
@@ -58,8 +59,7 @@ char	bittab[] = {
 	128
 };
 
-main(argc, argv)
-char **argv;
+int main(int argc,char ** argv)
 {
 	while (--argc > 0 && (++argv)[0][0]=='-')
 		switch (argv[0][1]) {
@@ -457,7 +457,7 @@ char *f;
 	if (nfile > 1 && hflag)
 		printf("%s:", f);
 	if (bflag)
-		printf("%ld:", (ftell(stdin)-1)/BSIZE);
+		printf("%ld:", (ftell(stdin)-1)/LBSIZE);
 	if (nflag)
 		printf("%ld:", lnum);
 	printf("%s\n", linebuf);
